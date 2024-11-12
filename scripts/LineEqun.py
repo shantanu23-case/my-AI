@@ -1,13 +1,18 @@
 import numpy as np
 from scipy import linalg
 #Solving Linear Equations
-A=np.array([[1,2],[5,6]])
+A=np.array([[1,2,3],[5,6,7]])
 B=np.array([4,5])
 m_rows=len(A)
 n_cols=len(A[0])
 print(m_rows)
 print(n_cols)
 #Finding the Determinant of Matrix A
+if m_rows!=n_cols:
+    print("It's a Non-Square Matrix so We cannot Find the Determinant")
+    exit ()
+else:
+    print("Lets do the Matrix operations Further !!")
 det_A=np.linalg.det(A)
 print (det_A)
 if m_rows==n_cols:
