@@ -31,3 +31,44 @@ plt.xlabel('Number of Principal Components')
 plt.ylabel('Cumulative Explained Variance')
 plt.grid(True)
 plt.show()
+
+##Task2
+pca_50 = PCA(n_components=50)
+X_pca_50 = pca_50.fit_transform(X)
+
+pca_250 = PCA(n_components=250)
+X_pca_250 = pca_250.fit_transform(X)
+
+pca_500 = PCA(n_components=500)
+X_pca_500 = pca_500.fit_transform(X)
+
+##Task3
+# Reconstruct the images from the reduced data
+# We reconstruct the images using PCA.inverse_transform.
+X_reconstructed_50 = pca_50.inverse_transform(X_pca_50)
+X_reconstructed_250 = pca_250.inverse_transform(X_pca_250)
+X_reconstructed_500 = pca_500.inverse_transform(X_pca_500)
+
+##Task4
+import random
+
+# Select 5 random indices
+random_indices = random.sample(range(2000), 5)
+
+# Calculate PSNR for each random image
+psnrs = []
+for idx in random_indices:
+    original_image = X[idx].reshape(28, 28) * 255  # Convert back to original range
+    reconstructed_image_50 = X_reconstructed_50[idx].reshape(28, 28) * 255
+    reconstructed_image_250 = X_reconstructed_250[idx].reshape(28, 28) * 255
+    reconstructed_image_500 = X_reconstructed_500[idx].reshape(28, 28) * 255
+
+    psnr_50 = psnr(original_image, reconstructed_image_50)
+    psnr_250 = psnr(original_image, reconstructed_image_250)
+    psnr_500 = psnr(original_image, reconstructed_image_500)
+
+    psnrs.append((psnr_50, psnr_250, psnr_500))
+
+# Output the PSNR values
+for i, (psnr_50, psnr_250, psnr_500) in enumerate(psnrs):
+    print(f"Image {i+1} - PSNR (50 components): {psnr_50:.2f} dB, PSNR (250 components): {psnr_250:.2f} dB, PSNR (500 components): {psnr_500:.2f} dB")
