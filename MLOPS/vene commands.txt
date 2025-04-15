@@ -1,0 +1,2 @@
+python -m venv zenml-env
+source zenml-env/Scripts/activate

@@ -12,7 +12,8 @@
 
 # Standardize the Data: PCA is sensitive to the scale of the data, so it's common to standardize each feature to have a mean of 0 and a variance of 1 before applying PCA.
 # Compute the Covariance Matrix: The covariance matrix represents how the features of the data are correlated. For PCA to work effectively, it needs to understand how features vary together.
-# Compute the Eigenvalues and Eigenvectors: The eigenvalues and eigenvectors of the covariance matrix give the directions (principal components) along which the data has the most variance. The eigenvalues determine how much variance is explained by each component.
+# Compute the Eigenvalues and Eigenvectors: The eigenvalues and eigenvectors of the covariance matrix give the directions (principal components) along which the data has the most variance. 
+# The eigenvalues determine how much variance is explained by each component.
 # Sort Eigenvectors: Sort the eigenvectors in order of the magnitude of their corresponding eigenvalues (i.e., most variance first).
 # Choose Top k Components: Select the top k eigenvectors (or principal components) that explain the most variance. This reduces the dimensionality of the data.
 # Transform the Data: Finally, project the original data onto the new lower-dimensional space formed by the top k principal components.
